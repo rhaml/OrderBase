@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Hosting;
+using OrderGenerator.Infrastructure.Configuration;
 using QuickFix;
 using QuickFix.Logger;
 using QuickFix.Store;
@@ -15,15 +16,18 @@ namespace OrderGenerator.Infrastructure.Fix
     {
         private readonly FixApplication _application;
         private SocketInitiator? _socketInitiator;
+        private readonly QuickFixConfigBuilder _configBuilder;
 
-        public FixClient(FixApplication application)
+        public FixClient(FixApplication application, QuickFixConfigBuilder configBuilder)
         {
             _application = application;
+            _configBuilder = configBuilder;
         }
 
         public Task StartAsync(CancellationToken cancellationToken)
         {
-            var path = Path.Combine(AppContext.BaseDirectory, "quickfix.cfg");
+            var cfgPath = _configBuilder.Build();
+            var path = Path.Combine(AppContext.BaseDirectory, cfgPath);
             var settings = new SessionSettings(path);
             var storeFactory = new FileStoreFactory(settings);
             var logFactory = new FileLogFactory(settings);

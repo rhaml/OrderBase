@@ -2,20 +2,13 @@ using OpenTelemetry.Trace;
 using OrderGenerator.Api.Middleware;
 using OrderGenerator.Application;
 using OrderGenerator.Infrastructure;
+using OrderGenerator.Infrastructure.Configuration;
 using Serilog;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var allowSpecificOrigins = "_allowSpecificOrigins";
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy(name: allowSpecificOrigins,
-                      policy =>
-                      {
-                          policy.WithOrigins("http://localhost:5173").AllowAnyHeader().AllowAnyMethod();
-                      });
-});
+builder.Services.AddCors();
 
 builder.Host.UseSerilog((ctx, cfg) => 
     {
@@ -24,6 +17,7 @@ builder.Host.UseSerilog((ctx, cfg) =>
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.Configure<FixOptions>(builder.Configuration.GetSection("Fix"));
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure();
 builder.Services.AddHealthChecks();
@@ -43,7 +37,14 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 app.UseRouting();
-app.UseCors(allowSpecificOrigins);
+
+app.UseCors(policy =>
+{
+    policy
+        .AllowAnyOrigin()
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+});
 
 app.MapControllers();
 app.MapHealthChecks("/health");

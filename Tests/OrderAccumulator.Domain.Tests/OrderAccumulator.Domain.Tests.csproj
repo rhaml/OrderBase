@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OrderAccumulator.Domain\OrderAccumulator.Domain.csproj" />
+    <ProjectReference Include="..\..\OrderAccumulator\OrderAccumulator.Domain\OrderAccumulator.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

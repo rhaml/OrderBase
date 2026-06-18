@@ -4,8 +4,11 @@ WORKDIR /src
 
 COPY . .
 
-RUN dotnet restore
-RUN dotnet publish -c Release -o /app/publish
+RUN dotnet restore OrderGenerator/OrderGenerator.Api/OrderGenerator.Api.csproj
+RUN dotnet publish OrderGenerator/OrderGenerator.Api/OrderGenerator.Api.csproj \
+    -c Release \
+    -o /app/publish
+
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 

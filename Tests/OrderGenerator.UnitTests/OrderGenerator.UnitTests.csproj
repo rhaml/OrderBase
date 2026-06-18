@@ -19,8 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OrderGenerator.Application\OrderGenerator.Application.csproj" />
-    <ProjectReference Include="..\OrderGenerator.Infrastructure\OrderGenerator.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\OrderGenerator\OrderGenerator.Infrastructure\OrderGenerator.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>

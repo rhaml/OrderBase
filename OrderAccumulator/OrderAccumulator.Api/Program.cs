@@ -1,10 +1,12 @@
+using Microsoft.EntityFrameworkCore;
 using OpenTelemetry.Trace;
-using Serilog;
-
 using OrderAccumulator.Api.Middleware;
 using OrderAccumulator.Application;
 using OrderAccumulator.Infrastructure;
+using OrderAccumulator.Infrastructure.Data;
 using OrderAccumulator.Infrastructure.Telemetry;
+using QuickFix.Fields;
+using Serilog;
 
 var builder =
     WebApplication.CreateBuilder(args);
@@ -64,6 +66,22 @@ app.MapControllers();
 
 app.MapHealthChecks(
     "/health");
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        var context = services.GetRequiredService<OrderDbContext>();
+
+        context.Database.Migrate();
+        Console.WriteLine("--> Migrations aplicadas com sucesso no PostgreSQL!");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"--> Erro ao rodar migrations: {ex.Message}");
+    }
+}
 
 app.Run();
 

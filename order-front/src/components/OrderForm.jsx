@@ -13,12 +13,16 @@ export function OrderForm() {
     const [response, setResponse] = useState(null);
     const [orders, setOrders] = useState([])
 
-    const validateNumber = (value, setValue, setError, max) => {
-        if (value <= max) {
+    const validateNumber = (value, setValue, setError, max, decimal) => {
+        const partes = value.split('.');
+        if (partes[1] && partes[1].length > decimal) {
+            value = parseFloat(value).toFixed(decimal);
+        }
+        if (value < max) {
             setValue(value);
             setError('');
         } else {
-            setError(`O limite máximo é de ${max}.`);
+            setError(`O valor deve ser menor que ${max}.`);
         }
     };
 
@@ -49,7 +53,7 @@ export function OrderForm() {
                     <label>Simbolo</label>
                     <select value={symbol} onChange={(e) => setSymbol(e.target.value)}>
                         <option>PETR4</option>
-                        <option>VAL3</option>
+                        <option>VALE3</option>
                         <option>VIIA4</option>
                     </select>
                 </div>
@@ -62,13 +66,15 @@ export function OrderForm() {
                 </div>
                 <div>
                     <label>Quantidade</label>
-                    <input type="number" value={quantity} onChange={(e) => validateNumber(e.target.value, setQuantity, setErrorQuantity, 1000000)}></input>
-                     {errorQuantity && <p style={{ color: 'red', margin: '5px 0' }}>{errorQuantity}</p>}
+                    <input type="number" value={quantity} onChange={(e) => validateNumber(e.target.value, setQuantity, 
+                        setErrorQuantity, 1000000, 0)}></input>
+                    {errorQuantity && <p style={{ color: 'red', margin: '5px 0' }}>{errorQuantity}</p>}
                 </div>
                 <div>
                     <label>Preço</label>
-                    <input type="number" step="0.01" value={price} onChange={(e) => validateNumber(e.target.value, setPrice, setErrorPrice, 1000)}></input>
-                     {errorPrice && <p style={{ color: 'red', margin: '5px 0' }}>{errorPrice}</p>}
+                    <input type="number" step="0.01" value={price} onChange={(e) => validateNumber(e.target.value, setPrice, 
+                        setErrorPrice, 1000, 2)}></input>
+                    {errorPrice && <p style={{ color: 'red', margin: '5px 0' }}>{errorPrice}</p>}
                 </div>
                 <button type="submit" disabled={loading}>{loading ? "Enviando..." : "Enviar Ordem"}</button>
             </form>

@@ -7,7 +7,16 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+var allowSpecificOrigins = "_allowSpecificOrigins";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: allowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.WithOrigins("http://localhost:5173").AllowAnyHeader().AllowAnyMethod();
+                      });
+});
+
 builder.Host.UseSerilog((ctx, cfg) => 
     {
         cfg.ReadFrom.Configuration(ctx.Configuration).WriteTo.Console();
@@ -32,6 +41,9 @@ app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseSwagger();
 app.UseSwaggerUI();
+
+app.UseRouting();
+app.UseCors(allowSpecificOrigins);
 
 app.MapControllers();
 app.MapHealthChecks("/health");

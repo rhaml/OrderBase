@@ -8,6 +8,8 @@ using OrderAccumulator.Models;
 using OrderAccumulator.Services;
 using QuickFix;
 using QuickFix.Fields;
+using System.Diagnostics;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace OrderAccumulator.Infrastructure.Fix
 {
@@ -48,7 +50,11 @@ namespace OrderAccumulator.Infrastructure.Fix
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.ToString());
+                    var exposureResult = new ExposureResult(false, order.Symbol.Value, 0, 0,
+                        0, ex.Message);
+                    var report = BuildExecutionReport(order, exposureResult);
+                    Session.SendToTarget(report, sessionID);
+                    _logger.LogError(ex.ToString());
                 }
             });
         }

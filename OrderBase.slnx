@@ -1,12 +1,12 @@
 <Solution>
-  <Project Path="OrderAccumulator.Api/OrderAccumulator.Api.csproj" />
-  <Project Path="OrderAccumulator.Application/OrderAccumulator.Application.csproj" Id="925b94b3-6c85-4f0f-8066-0d3b950c7dcb" />
-  <Project Path="OrderAccumulator.Domain.Tests/OrderAccumulator.Domain.Tests.csproj" />
-  <Project Path="OrderAccumulator.Domain/OrderAccumulator.Domain.csproj" Id="8408d45b-aa58-41d6-9ed5-4f782bcd17b7" />
-  <Project Path="OrderAccumulator.Infrastructure/OrderAccumulator.Infrastructure.csproj" Id="0ac6ca79-8913-4ff4-9e8a-c13d430d0468" />
-  <Project Path="OrderGenerator.Api/OrderGenerator.Api.csproj" />
-  <Project Path="OrderGenerator.Application/OrderGenerator.Application.csproj" Id="338443d4-4caa-470f-8ef5-c404da4949c8" />
-  <Project Path="OrderGenerator.Domain/OrderGenerator.Domain.csproj" Id="3543b2ae-a4a9-4322-9c51-63cdb0695ed0" />
-  <Project Path="OrderGenerator.Infrastructure/OrderGenerator.Infrastructure.csproj" Id="09ec7c07-e50e-4afd-b8ff-4d1c02531e75" />
-  <Project Path="OrderGenerator.UnitTests/OrderGenerator.UnitTests.csproj" Id="9cb3119a-849b-4a3e-9cd7-31559e672934" />
+  <Project Path="OrderAccumulator/OrderAccumulator.Api/OrderAccumulator.Api.csproj" />
+  <Project Path="OrderAccumulator/OrderAccumulator.Application/OrderAccumulator.Application.csproj" Id="925b94b3-6c85-4f0f-8066-0d3b950c7dcb" />
+  <Project Path="Tests/OrderAccumulator.Domain.Tests/OrderAccumulator.Domain.Tests.csproj" />
+  <Project Path="OrderAccumulator/OrderAccumulator.Domain/OrderAccumulator.Domain.csproj" Id="8408d45b-aa58-41d6-9ed5-4f782bcd17b7" />
+  <Project Path="OrderAccumulator/OrderAccumulator.Infrastructure/OrderAccumulator.Infrastructure.csproj" Id="0ac6ca79-8913-4ff4-9e8a-c13d430d0468" />
+  <Project Path="OrderGenerator/OrderGenerator.Api/OrderGenerator.Api.csproj" />
+  <Project Path="OrderGenerator/OrderGenerator.Application/OrderGenerator.Application.csproj" Id="338443d4-4caa-470f-8ef5-c404da4949c8" />
+  <Project Path="OrderGenerator/OrderGenerator.Domain/OrderGenerator.Domain.csproj" Id="3543b2ae-a4a9-4322-9c51-63cdb0695ed0" />
+  <Project Path="OrderGenerator/OrderGenerator.Infrastructure/OrderGenerator.Infrastructure.csproj" Id="09ec7c07-e50e-4afd-b8ff-4d1c02531e75" />
+  <Project Path="Tests/OrderGenerator.UnitTests/OrderGenerator.UnitTests.csproj" Id="9cb3119a-849b-4a3e-9cd7-31559e672934" />
 </Solution>

@@ -14,7 +14,7 @@ namespace OrderGenerator.UnitTests
         {
             var gateway = new Mock<IFixGateway>();
             gateway.Setup(x => x.SendOrderAsync(It.IsAny<OrderRequest>(), It.IsAny<CancellationToken>()))
-                .ReturnsAsync(new ExecutionResult("1", true,null));
+                .ReturnsAsync(new ExecutionResult("1", "PETR4", 1000, true,null));
             var handler = new SendOrderHandler(gateway.Object);
             var result = await handler.Handle(new SendOrderCommand("PETR4", "Buy", 100, 10), default);
             result.Accepted.Should().BeTrue();

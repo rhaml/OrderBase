@@ -38,6 +38,6 @@ public class ExposureTests
         var orderRequest = new OrderRequest("PETR4", OrderSide.Buy, 100, 100);
         var result = exposure.ApplyOrder(orderRequest);
         result.Accepted.Should().BeFalse();
-        result.RejectionReason.Should().Be("Exposure limit exceeded");
+        result.RejectionReason.Should().Be("Exposure limit exceeded for symbol PETR4. Current exposure: 99999000, New exposure: 100009000");
     }
 }

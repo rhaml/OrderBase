@@ -262,17 +262,12 @@ Atualizar connection string:
 
 ```json
 {
-  "ConnectionStrings": {
-    "Postgres": "Host=localhost;Port=5432;Database=order;Username=postgres;Password=order"
-  }
+   "ConnectionStrings": {
+     "Orderdb": "Host=host.docker.internal;Port=5432;Database=order;Username=postgres;Password=order"
+ },
 }
 ```
-
-Executar migrations:
-
-```bash
-dotnet ef database update
-```
+Em appsettings.Development.json
 
 ---
 
@@ -289,6 +284,14 @@ cd OrderAccumulator/OrderAccumulator.Api
 
 dotnet run
 ```
+
+*Se necessário, após o OrderAccumulator.Api:
+Executar migrations:
+
+```bash
+dotnet ef database update
+```
+Porém o OrderAccumalator.Api já roda o migrations.
 
 ---
 

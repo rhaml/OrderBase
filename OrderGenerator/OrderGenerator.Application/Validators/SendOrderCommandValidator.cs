@@ -18,18 +18,19 @@ namespace OrderGenerator.Application.Validators
                     x == "VALE3" ||
                     x == "VIIA4"
                 )
-                .WithMessage("Invalid stock symbol.");
+                .WithMessage("Simbolo inválido.");
             RuleFor(x => x.Quantity)
                 .GreaterThan(0)
                 .LessThan(100000)
-                .WithMessage("Invalid order quantity. Must be a positive number.");
+                .WithMessage("Quandidade deve ser maior que 0 e menor que 100000");
             RuleFor(x => x.Price)
                 .GreaterThan(0)
                 .LessThan(1000)
-                .WithMessage("Invalid order price. Must be a positive number.");
+                .WithMessage("Preço deve ser maior que 0 e menor que 1000");
             RuleFor(x => x.Price)
                 .Must(x =>
-                    decimal.Round(x * 100, 0) == x * 100);
+                    decimal.Round(x * 100, 0) == x * 100)
+                .WithMessage("Preço deve conter, no máximo, somente duas casas decimais");
         }
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using OrderGenerator.Api.Contracts;
 using OrderGenerator.Application.Commands;
+using OrderGenerator.Domain.Models;
 
 namespace OrderGenerator.Controllers
 {
@@ -33,6 +34,10 @@ namespace OrderGenerator.Controllers
             catch (OperationCanceledException)
             {
                 return StatusCode(504, new { Message = "Request timed out" });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new ExecutionResult("", false, Message: ex.Message));
             }
         }
     }

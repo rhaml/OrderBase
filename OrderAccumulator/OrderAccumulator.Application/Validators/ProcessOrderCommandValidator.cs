@@ -10,27 +10,26 @@ namespace OrderAccumulator.Application.Validators
 {
     public  class ProcessOrderCommandValidator : AbstractValidator<ProcessOrderCommand>
     {
-        public ProcessOrderCommandValidator() { 
+        public ProcessOrderCommandValidator() {
             RuleFor(x => x.Symbol)
                 .Must(x =>
                     x == "PETR4" ||
                     x == "VALE3" ||
                     x == "VIIA4"
                 )
-                .WithMessage("Invalid stock symbol.");
-           
+                .WithMessage("Simbolo inválido.");
             RuleFor(x => x.Quantity)
                 .GreaterThan(0)
                 .LessThan(100000)
-                .WithMessage("Invalid order quantity. Must be a positive number or less than 100000.");
+                .WithMessage("Quandidade deve ser maior que 0 e menor que 100000");
             RuleFor(x => x.Price)
                 .GreaterThan(0)
                 .LessThan(1000)
-                .WithMessage("Invalid order price. Must be a positive number or less than 1000.");
+                .WithMessage("Preço deve ser maior que 0 e menor que 1000");
             RuleFor(x => x.Price)
                 .Must(x =>
                     decimal.Round(x * 100, 0) == x * 100)
-                .WithMessage("Invalid order price. Should only have up to two decimal places.."); ;
+                .WithMessage("Preço deve conter, no máximo, somente duas casas decimais");
         }
     }
 }

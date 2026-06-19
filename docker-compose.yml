@@ -76,7 +76,7 @@ services:
       - order-network
   frontend:
     build:
-      context: ./order-front
+      context: ./OrderGenerator/Frontend
       args:
         VITE_API_URL: http://localhost:5000
       dockerfile: Dockerfile

@@ -1,6 +1,7 @@
 body {
     margin: 0;
-    background: #f4f6f9;
+    background: linear-gradient(to bottom, #8A2387, #E94057, #F27121); /* ou usando tons puros de azul e roxo */
+    background: linear-gradient(135deg, #6B11A3 0%, #2563EB 100%);
     font-family: Segoe UI, sans-serif;
 }
 

@@ -3,7 +3,7 @@
 
 Sistema distribuído para geração, validação, roteamento e controle de exposição financeira de ordens de negociação utilizando protocolo FIX 4.4.
 
-## 📋 Sobre o Projeto
+## Sobre o Projeto
 
 Este projeto implementa uma solução composta por dois serviços independentes que se comunicam através do protocolo FIX 4.4 utilizando QuickFIX/N, simulando um fluxo simplificado de negociação de ativos financeiros.
 
@@ -29,6 +29,7 @@ Aplicação responsável por:
 
 No Frontend:
 - Disponibilizar interface web em React.
+
 No Backend:
 - Expor API REST para criação de ordens.
 - Validar requisições utilizando FluentValidation.
@@ -367,13 +368,8 @@ Usado a Referência:
 
 https://www.toptal.com/developers/gitignore
 
-conforme solicitado
-
 ---
-
-
-> This is a challenge by Coodesh: https://coodesh.com/
-
+>  This is a challenge by [Coodesh](https://coodesh.com/)
 ---
 
 ## Autor

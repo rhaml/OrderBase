@@ -1,6 +1,6 @@
 ﻿namespace OrderAccumulator.Models
 {
-    public  record ExposureResult(bool Accepted, 
+    public record ExposureResult(bool Accepted, 
         string Symbol, 
         decimal CurrentExposure, 
         decimal NewExposure, 

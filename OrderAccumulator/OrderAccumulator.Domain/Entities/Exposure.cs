@@ -44,7 +44,7 @@ namespace OrderAccumulator.Domain.Entities
                     CurrentExposure: currentExposure,
                     NewExposure: currentExposure,
                     Delta: delta,
-                    RejectionReason: "Exposure limit exceeded"
+                    RejectionReason: $"Exposure limit exceeded for symbol {Symbol}. Current exposure: {currentExposure}, New exposure: {newExposure}"
                 );
             }
             

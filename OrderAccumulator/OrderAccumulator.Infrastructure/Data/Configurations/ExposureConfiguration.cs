@@ -18,9 +18,6 @@ namespace OrderAccumulator.Infrastructure.Data.Configurations
             builder.Property(e => e.Symbol).IsRequired();
             builder.Property(e => e.Value).HasPrecision(18, 2);
             builder.HasIndex(e => e.Symbol).IsUnique();
-            builder.Property<byte[]>("rowVersion")
-               .IsRowVersion()
-               .HasColumnName("rowVersion");
         }
     }
 }

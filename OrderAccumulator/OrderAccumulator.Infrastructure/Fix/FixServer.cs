@@ -24,7 +24,6 @@ namespace OrderAccumulator.Infrastructure.Fix
             var messageFactory = new DefaultMessageFactory();
 
             _theadedSocketAcceptor = new ThreadedSocketAcceptor(_application, storeFactory, settings, logFactory, messageFactory);
-
             _theadedSocketAcceptor.Start();
 
             return Task.CompletedTask;

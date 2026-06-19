@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace OrderGenerator.Domain.Models
 {
-    public  record ExecutionResult(string ClOrdId,
+    public  record ExecutionResult(
+        string ClOrdId,
+        string Symbol,
+        decimal Exposure,
         bool Accepted,
         string? Message);
 }

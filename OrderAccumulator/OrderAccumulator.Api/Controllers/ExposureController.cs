@@ -18,7 +18,7 @@ namespace OrderAccumulator.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var result = await _context.Exposures.OrderBy(x => x.Symbol).Select(x => new {x.Symbol, x.Value }).ToListAsync();
+            var result = await _context.Exposures.OrderBy(x => x.Symbol).Select(x => new { x.Symbol, x.Value }).ToListAsync();
             return Ok(result);
         }
     }

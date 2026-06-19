@@ -23,12 +23,6 @@ namespace OrderGenerator.Controllers
             try
             {
                 var response = await _mediator.Send(new SendOrderCommand(request.Symbol, request.Side, request.Quantity, request.Price), cancellationToken);
-                var orderResponse = new OrderResponse
-                {
-                    ClOrdId = response.ClOrdId,
-                    Status = response.Accepted ? "Accepted" : "Rejected",
-                    Side = request.Side
-                };
                 return Ok(response);
             }
             catch (OperationCanceledException)
@@ -37,7 +31,7 @@ namespace OrderGenerator.Controllers
             }
             catch (Exception ex)
             {
-                return Ok(new ExecutionResult("", false, Message: ex.Message));
+                return Ok(new ExecutionResult("", request.Symbol, 0, false, Message: ex.Message));
             }
         }
     }

@@ -35,7 +35,7 @@ namespace OrderGenerator.Infrastructure.Fix
                 message = report.Text.Value;
             }
 
-            var executionResult = new ExecutionResult(clOrdID, accepted, message);
+            var executionResult = new ExecutionResult(clOrdID, report.Symbol.Value, report.CumQty.Value,accepted, message);
 
             _executionReportStore.Complete(executionResult);
             _logger.LogInformation("Received execution report for order {ClOrdID}: Accepted={Accepted}, Message={Message}", clOrdID, accepted, message);

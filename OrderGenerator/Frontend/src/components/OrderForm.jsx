@@ -67,7 +67,7 @@ export function OrderForm() {
                 <div>
                     <label>Quantidade</label>
                     <input type="number" value={quantity} onChange={(e) => validateNumber(e.target.value, setQuantity, 
-                        setErrorQuantity, 1000000, 0)}></input>
+                        setErrorQuantity, 100000, 0)}></input>
                     {errorQuantity && <p style={{ color: 'red', margin: '5px 0' }}>{errorQuantity}</p>}
                 </div>
                 <div>

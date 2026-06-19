@@ -30,7 +30,6 @@ namespace OrderAccumulator.Services
             {
                 exposure = new Exposure(order.Symbol);
                 exists = false;
-                
             }
 
             var result = exposure.ApplyOrder(order);

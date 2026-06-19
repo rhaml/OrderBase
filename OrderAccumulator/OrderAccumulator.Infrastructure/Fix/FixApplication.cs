@@ -50,8 +50,7 @@ namespace OrderAccumulator.Infrastructure.Fix
                 }
                 catch (Exception ex)
                 {
-                    var exposureResult = new ExposureResult(false, order.Symbol.Value, 0, 0,
-                        0, ex.Message);
+                    var exposureResult = new ExposureResult(false, order.Symbol.Value, 0, 0, 0, ex.Message);
                     var report = BuildExecutionReport(order, exposureResult);
                     Session.SendToTarget(report, sessionID);
                     _logger.LogError(ex.ToString());
@@ -69,7 +68,7 @@ namespace OrderAccumulator.Infrastructure.Fix
                 order.Symbol,
                 order.Side,
                 new LeavesQty(exposureResult.Accepted ? order.OrderQty.Value : 0),
-                new CumQty(0),
+                new CumQty(exposureResult.NewExposure),
                 new AvgPx(0)
             );
 

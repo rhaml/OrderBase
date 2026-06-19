@@ -141,7 +141,7 @@ A exposição é calculada da seguinte forma:
 Exposição = (Preço × Quantidade Comprada)-(Preço × Quantidade Vendida)
 ```
 
-Cada ativo possui um limite máximo de 100000000.
+Cada ativo possui um limite máximo de 100.000.000.
 
 Quando o limite é excedido:
 
@@ -165,7 +165,7 @@ OpenTelemetry
 ### Health Check
 
 ```http
-GET api/fix/status
+GET api/Fix/status
 ```
 
 Resposta:

@@ -21,7 +21,6 @@ namespace OrderAccumulator.Application.Behaviors
                 return await next();
 
             var validationContext = new ValidationContext<TRequest>(request);
-
             var result = await Task.WhenAll(_validators.Select(v => v.ValidateAsync(validationContext, cancellationToken)));
 
             var failures = result.SelectMany(r => r.Errors).Where(f => f != null).ToList();

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OrderAccumulator.Domain.Models
 {
-    public  record OrderRequest(string Symbol,
+    public record OrderRequest(string Symbol,
         OrderSide Side,
         decimal Quantity,
         decimal Price

@@ -1,3 +1,4 @@
+import './OrderForm.css'
 import {api} from "../services/api"
 import {useState} from "react"
 
@@ -46,10 +47,10 @@ export function OrderForm() {
         }
     }
     return (
-        <div>
-            <h2>Order Generator</h2>
+        <div className="card">
+            <h2>Nova Ordem</h2>
             <form onSubmit={orderSubmit}>
-                <div>
+                <div className="form-group">
                     <label>Simbolo</label>
                     <select value={symbol} onChange={(e) => setSymbol(e.target.value)}>
                         <option>PETR4</option>
@@ -57,20 +58,20 @@ export function OrderForm() {
                         <option>VIIA4</option>
                     </select>
                 </div>
-                <div>
+                <div className="form-group">
                     <label>Lado</label>
                     <select value={side} onChange={(e) => setSide(e.target.value)}>
                         <option value="Buy">Compra</option>
                         <option value="Sell">Venda</option>
                     </select>
                 </div>
-                <div>
+                <div className="form-group">
                     <label>Quantidade</label>
                     <input type="number" value={quantity} onChange={(e) => validateNumber(e.target.value, setQuantity, 
                         setErrorQuantity, 100000, 0)}></input>
                     {errorQuantity && <p style={{ color: 'red', margin: '5px 0' }}>{errorQuantity}</p>}
                 </div>
-                <div>
+                <div className="form-group">
                     <label>Preço</label>
                     <input type="number" step="0.01" value={price} onChange={(e) => validateNumber(e.target.value, setPrice, 
                         setErrorPrice, 1000, 2)}></input>
@@ -79,11 +80,28 @@ export function OrderForm() {
                 <button type="submit" disabled={loading}>{loading ? "Enviando..." : "Enviar Ordem"}</button>
             </form>
             {response && (
-                <div style={{ marginTop: 30 }}>
+                <div className="result-card">
                     <h3>Resposta</h3>
-                    <pre>
-                        {JSON.stringify(response, null, 2)}
-                    </pre>
+                        <div>
+                            {response.clOrdId ? <p><strong>Id da ordem:</strong> {response.clOrdId}</p> : <p></p>}
+                        </div>
+                        <div>
+                            <span
+                                className={
+                                    response.accepted === true
+                                        ? "status accepted"
+                                        : "status rejected"
+                                }
+                            ><strong>Status:</strong> {response.accepted === true
+                                        ? "Aceito"
+                                        : "Rejeitado"}</span>
+                        </div>
+                        <div>
+                            {response.exposure ? <p><strong>Exposição financeira:</strong> {response.exposure}</p> : <p></p>}
+                        </div>
+                        <div>
+                            {response.message ? <p><strong>Mensagem:</strong> {response.message}</p> : <p></p>}
+                        </div>
                 </div>
             )}
         </div>

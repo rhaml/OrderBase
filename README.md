@@ -138,7 +138,7 @@ tests/
 A exposição é calculada da seguinte forma:
 
 ```text
-Exposição = (Preço × Quantidade Comprada)-(Preço × Quantidade Vendida)
+Exposição = Σ(Preço × Quantidade Comprada)-Σ(Preço × Quantidade Vendida)
 ```
 
 Cada ativo possui um limite máximo de 100.000.000.
@@ -172,7 +172,7 @@ Resposta:
 
 ```json
 {
-  "connected": true
+  "status": "Connected"
 }
 ```
 
@@ -209,8 +209,8 @@ Validação de Exposição        |
 
 ### Pré-requisitos
 
-- Docker
-- Docker Compose
+- [Docker](https://www.docker.com/products/docker-desktop/)
+- [Docker-Compose](https://docs.docker.com/compose/install/)
 
 ### Clonar o projeto
 
@@ -243,9 +243,9 @@ docker ps
 
 ### Pré-requisitos
 
-- .NET SDK 8
-- Node.js 22+
-- PostgreSQL
+- [.NET SDK 8] (https://dotnet.microsoft.com/pt-br/download/dotnet/8.0)
+- [Node.js] (https://nodejs.org/pt-br)
+- [PostgreSQL] (https://www.postgresql.org/download/)
 
 ### Banco de Dados
 
@@ -335,17 +335,21 @@ Resposta
 Aceito:
 ```json
 {
-  "clOrdId": "50837041-a9d7-4855-9ed2-e7085c55d623",
-  "accepted": true,
-  "message": null
+    "clOrdId": "8b0fab85-a7aa-412d-a829-d82bcd6b6a7a",
+    "symbol": "PETR4",
+    "exposure": 5.00,
+    "accepted": true,
+    "message": null
 }
 ```
 Rejeitado:
 ```json
 {
-  "clOrdId": "48016b7e-4ee3-4269-8ff7-d76ca052b3a8",
-  "accepted": false,
-  "message": "Exposure limit exceeded"
+    "clOrdId": "0ca18afb-2e83-4d2e-9403-6c66d7dcf49d",
+    "symbol": "PETR4",
+    "exposure": 99899006.00,
+    "accepted": false,
+    "message": "Exposure limit exceeded for symbol PETR4. Current exposure: 99899006,00, New exposure: 199798007,00"
 }
 ```
 
@@ -369,36 +373,11 @@ Usado a Referência:
 https://www.toptal.com/developers/gitignore
 
 ---
->  This is a challenge by [Coodesh](https://coodesh.com/)
----
 
 ## Autor
 
-Desenvolvido por Andre Lucio Stockler Rodrigues Portes de Moura como solução para o desafio técnico utilizando C#, .NET 8, React(como front, de escolha do candidato) e protocolo FIX 4.4.
+Desenvolvido por Andre Lucio Stockler Rodrigues Portes de Moura como solução para o desafio técnico utilizando C#, .NET 8, React e protocolo FIX 4.4.
 
-# Project Empty Template
-
-Este é um repositório de exemplo para você começar a desenvolver a questão, leia com atenção os requisitos do enunciado da questão na plataforma e seguia as boas práticas sobre como utilizar este repositório.
-
-
-## Readme do Repositório
-
-- Deve conter o título do projeto
-- Uma descrição sobre o projeto em frase
-- Deve conter uma lista com linguagem, framework e/ou tecnologias usadas
-- Como instalar e usar o projeto (instruções)
-- Não esqueça o [.gitignore](https://www.toptal.com/developers/gitignore)
-- Se está usando github pessoal, referencie que é um challenge by coodesh:  
+---
 
 >  This is a challenge by [Coodesh](https://coodesh.com/)
-
-## Finalização e Instruções para a Apresentação
-
-1. Adicione o link do repositório com a sua solução na questão na plataforma
-2. Verifique se o Readme está bom e faça o commit final em seu repositório;
-3. Envie e aguarde as instruções para seguir. Caso o teste tenha apresentação de vídeo, dentro da tela de entrega será possível gravar após adicionar o link do repositório. Sucesso e boa sorte. =)
-
-
-## Suporte
-
-Para tirar dúvidas sobre o processo envie uma mensagem diretamente a um especialista no chat da plataforma. 

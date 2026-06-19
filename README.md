@@ -236,7 +236,16 @@ docker compose down -v
 ```bash
 docker ps
 ```
+### Verificar host:port
 
+- Se necessário, verificar a porta e o host do OrderGenerator no docker
+- Em caso de erro de comunicação do frontend com o backend, ajustar:
+
+```text
+arquivo OrderBase\OrderGenerator\Frontend\.env.production
+
+VITE_API_URL=http://127.0.0.1:5000 ou VITE_API_URL=http://{Seu_docker_host}:{Sua_docker_port}
+```
 ---
 
 ## Executando Localmente

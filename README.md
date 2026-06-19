@@ -243,9 +243,9 @@ docker ps
 
 ### Pré-requisitos
 
-- [.NET SDK 8] (https://dotnet.microsoft.com/pt-br/download/dotnet/8.0)
-- [Node.js] (https://nodejs.org/pt-br)
-- [PostgreSQL] (https://www.postgresql.org/download/)
+- [.NET SDK 8](https://dotnet.microsoft.com/pt-br/download/dotnet/8.0)
+- [Node.js](https://nodejs.org/pt-br)
+- [PostgreSQL](https://www.postgresql.org/download/)
 
 ### Banco de Dados
 
